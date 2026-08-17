@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Segurança no Trabalho - Links Úteis</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #1e40af;
+            --primary-dark: #1e3a8a;
+            --secondary: #dc2626;
+            --success: #16a34a;
+            --warning: #ea580c;
+            --light: #f8fafc;
+            --dark: #1e293b;
+            --gray: #64748b;
+            --border: #e2e8f0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 600px;
+        }
+
+        /* PROFILE SECTION */
+        .profile {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            margin: 0 auto 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            box-shadow: 0 5px 20px rgba(30, 64, 175, 0.3);
+        }
+
+        .profile h1 {
+            font-size: 2rem;
+            color: var(--dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .profile p {
+            color: var(--gray);
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .subtitle {
+            color: var(--primary);
+            font-weight: 600;
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+        }
+
+        /* LINKS SECTION */
+        .links-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .link-btn {
+            background: white;
+            border: none;
+            padding: 1.2rem 1.5rem;
+            border-radius: 15px;
+            cursor: pointer;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--dark);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .link-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            transition: left 0.3s ease;
+            z-index: -1;
+        }
+
+        .link-btn:hover {
+            transform: translateY(-5px);
+            color: white;
+            box-shadow: 0 10px 30px rgba(30, 64, 175, 0.3);
+        }
+
+        .link-btn:hover::before {
+            left: 0;
+        }
+
+        .link-icon {
+            font-size: 1.5rem;
+            width: 30px;
+            text-align: center;
+        }
+
+        .link-content {
+            text-align: left;
+            flex: 1;
+        }
+
+        .link-title {
+            font-weight: 700;
+            display: block;
+            margin-bottom: 0.2rem;
+        }
+
+        .link-desc {
+            font-size: 0.85rem;
+            opacity: 0.8;
+        }
+
+        /* CATEGORY */
+        .category {
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .category-title {
+            color: white;
+            font-size: 0.9rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+            opacity: 0.9;
+        }
+
+        /* SOCIAL LINKS */
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .social-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: white;
+            border: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .social-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        /* FOOTER */
+        .footer {
+            text-align: center;
+            color: white;
+            margin-top: 2rem;
+            padding: 1rem;
+            opacity: 0.9;
+            font-size: 0.9rem;
+        }
+
+        .credits {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1rem;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+            margin-top: 1rem;
+        }
+
+        .programmer-name {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            margin: 0.3rem;
+            font-weight: 600;
+        }
+
+        /* ANIMATIONS */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .profile {
+            animation: fadeIn 0.6s ease;
+        }
+
+        .link-btn {
+            animation: fadeIn 0.6s ease;
+        }
+
+        .link-btn:nth-child(1) { animation-delay: 0.1s; }
+        .link-btn:nth-child(2) { animation-delay: 0.2s; }
+        .link-btn:nth-child(3) { animation-delay: 0.3s; }
+        .link-btn:nth-child(4) { animation-delay: 0.4s; }
+        .link-btn:nth-child(5) { animation-delay: 0.5s; }
+        .link-btn:nth-child(6) { animation-delay: 0.6s; }
+        .link-btn:nth-child(7) { animation-delay: 0.7s; }
+
+        /* RESPONSIVE */
+        @media (max-width: 480px) {
+            .profile {
+                padding: 1.5rem;
+            }
+
+            .profile h1 {
+                font-size: 1.5rem;
+            }
+
+            .link-btn {
+                padding: 1rem 1.2rem;
+                font-size: 0.95rem;
+            }
+
+            .avatar {
+                width: 100px;
+                height: 100px;
+                font-size: 2.5rem;
+            }
+        }
+
+        /* TOOLTIP */
+        .tooltip {
+            position: relative;
+        }
+
+        .tooltip::after {
+            content: attr(data-tooltip);
+            position: absolute;
+            bottom: 120%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--dark);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s;
+            z-index: 1000;
+        }
+
+        .tooltip:hover::after {
+            opacity: 1;
+        }
+
+        /* BADGE */
+        .badge {
+            display: inline-block;
+            background: var(--secondary);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            margin-left: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- PROFILE -->
+        <div class="profile">
+            <div class="avatar">🛡️</div>
+            <h1>Segurança no Trabalho</h1>
+            <p class="subtitle">Portal de Segurança Ocupacional</p>
+            <p>Acesse recursos, documentos e informações sobre segurança no trabalho</p>
+        </div>
+
+        <!-- LINKS -->
+        <div class="links-container">
+            <!-- PRINCIPAIS -->
+            <div class="category">
+                <div class="category-title">📌 Links Principais</div>
+            </div>
+
+            <a href="https://htmlpreview.github.io/?https://raw.githubusercontent.com/ancehw/Seguranca-Trabalho/main/index.html" 
+               class="link-btn tooltip" 
+               data-tooltip="Acesse o site completo"
+               target="_blank">
+                <span class="link-icon">🌐</span>
+                <span class="link-content">
+                    <span class="link-title">Site Completo</span>
+                    <span class="link-desc">Plataforma profissional com todos os recursos</span>
+                </span>
+            </a>
+
+            <a href="https://github.com/ancehw/Seguranca-Trabalho" 
+               class="link-btn tooltip" 
+               data-tooltip="Repositório no GitHub"
+               target="_blank">
+                <span class="link-icon">💻</span>
+                <span class="link-content">
+                    <span class="link-title">Código Fonte</span>
+                    <span class="link-desc">Acesse o repositório do projeto</span>
+                </span>
+            </a>
+
+            <!-- NORMAS -->
+            <div class="category">
+                <div class="category-title">📚 Normas Regulamentadoras</div>
+            </div>
+
+            <a href="https://www.gov.br/trabalho/pt-br/assuntos/normas-regulamentadoras" 
+               class="link-btn tooltip" 
+               data-tooltip="Normas oficiais do governo"
+               target="_blank">
+                <span class="link-icon">📋</span>
+                <span class="link-content">
+                    <span class="link-title">Normas Regulamentadoras - MTE</span>
+                    <span class="link-desc">Normas oficiais do Ministério do Trabalho</span>
+                </span>
+            </a>
+
+            <a href="https://www.abnt.org.br/" 
+               class="link-btn tooltip" 
+               data-tooltip="Associação Brasileira de Normas Técnicas"
+               target="_blank">
+                <span class="link-icon">🏢</span>
+                <span class="link-content">
+                    <span class="link-title">ABNT - Normas Técnicas</span>
+                    <span class="link-desc">Normas de segurança e qualidade</span>
+                </span>
+            </a>
+
+            <!-- EDUCAÇÃO -->
+            <div class="category">
+                <div class="category-title">🎓 Recursos Educacionais</div>
+            </div>
+
+            <a href="https://www.youtube.com/results?search_query=segurança+no+trabalho" 
+               class="link-btn tooltip" 
+               data-tooltip="Vídeos sobre segurança"
+               target="_blank">
+                <span class="link-icon">▶️</span>
+                <span class="link-content">
+                    <span class="link-title">YouTube - Segurança</span>
+                    <span class="link-desc">Conteúdo educacional em vídeo</span>
+                </span>
+            </a>
+
+            <a href="https://www.cursera.org/" 
+               class="link-btn tooltip" 
+               data-tooltip="Cursos online gratuitos"
+               target="_blank">
+                <span class="link-icon">💡</span>
+                <span class="link-content">
+                    <span class="link-title">Cursos Online</span>
+                    <span class="link-desc">Treinamentos sobre segurança ocupacional</span>
+                </span>
+            </a>
+
+            <!-- FERRAMENTAS -->
+            <div class="category">
+                <div class="category-title">🛠️ Ferramentas e Documentos</div>
+            </div>
+
+            <a href="https://drive.google.com" 
+               class="link-btn tooltip" 
+               data-tooltip="Armazene documentos na nuvem"
+               target="_blank">
+                <span class="link-icon">☁️</span>
+                <span class="link-content">
+                    <span class="link-title">Google Drive</span>
+                    <span class="link-desc">Armazene e compartilhe documentos</span>
+                </span>
+            </a>
+
+            <a href="https://www.canva.com" 
+               class="link-btn tooltip" 
+               data-tooltip="Crie materiais profissionais"
+               target="_blank">
+                <span class="link-icon">🎨</span>
+                <span class="link-content">
+                    <span class="link-title">Canva - Design</span>
+                    <span class="link-desc">Crie infográficos e materiais visuais</span>
+                </span>
+            </a>
+
+            <!-- CONTATO -->
+            <div class="category">
+                <div class="category-title">📞 Contato e Suporte</div>
+            </div>
+
+            <a href="mailto:contato@segurancanotrabalho.com.br" 
+               class="link-btn tooltip" 
+               data-tooltip="Envie um email">
+                <span class="link-icon">📧</span>
+                <span class="link-content">
+                    <span class="link-title">Email</span>
+                    <span class="link-desc">contato@segurancanotrabalho.com.br</span>
+                </span>
+            </a>
+
+            <a href="https://wa.me/5511999999999" 
+               class="link-btn tooltip" 
+               data-tooltip="Chat no WhatsApp"
+               target="_blank">
+                <span class="link-icon">💬</span>
+                <span class="link-content">
+                    <span class="link-title">WhatsApp</span>
+                    <span class="link-desc">(11) 99999-9999 - Suporte 24/7</span>
+                </span>
+            </a>
+        </div>
+
+        <!-- SOCIAL MEDIA -->
+        <div class="social-links">
+            <a href="https://www.facebook.com" target="_blank" class="social-btn tooltip" data-tooltip="Facebook">📘</a>
+            <a href="https://www.instagram.com" target="_blank" class="social-btn tooltip" data-tooltip="Instagram">📷</a>
+            <a href="https://www.linkedin.com" target="_blank" class="social-btn tooltip" data-tooltip="LinkedIn">💼</a>
+            <a href="https://www.youtube.com" target="_blank" class="social-btn tooltip" data-tooltip="YouTube">▶️</a>
+            <a href="https://twitter.com" target="_blank" class="social-btn tooltip" data-tooltip="Twitter">🐦</a>
+        </div>
+
+        <!-- FOOTER -->
+        <div class="footer">
+            <div class="credits">
+                <p style="font-weight: 700; margin-bottom: 0.5rem;">👨‍💻 Desenvolvido por:</p>
+                <div>
+                    <span class="programmer-name">Gabriel Lima</span>
+                    <span class="programmer-name">Dayllon Kauan</span>
+                    <span class="programmer-name">Adryan Kaue</span>
+                </div>
+                <p style="margin-top: 1rem; font-size: 0.85rem;">
+                    🛡️ 2026 - Segurança no Trabalho | Todos os direitos reservados
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Analytics
+        console.log('🛡️ Segurança no Trabalho - Link Hub');
+        console.log('Desenvolvedores: Gabriel Lima, Dayllon Kauan, Adryan Kaue');
+
+        // Track link clicks
+        document.querySelectorAll('.link-btn').forEach(link => {
+            link.addEventListener('click', function() {
+                const title = this.querySelector('.link-title').textContent;
+                console.log('Link clicado:', title);
+            });
+        });
+
+        // Smooth animations
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('✅ Link Hub carregado com sucesso!');
+        });
+    </script>
+</body>
+</html>
