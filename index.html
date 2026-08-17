@@ -411,6 +411,59 @@
             font-weight: 600;
         }
 
+        /* DEVELOPER CARDS WITH IMAGES */
+        .developer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .developer-card {
+            background: white;
+            border: 2px solid var(--border);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+        }
+
+        .developer-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+            border-color: var(--primary);
+        }
+
+        .developer-image {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+        }
+
+        .developer-info {
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .developer-info h3 {
+            margin-top: 0;
+            color: var(--primary);
+            font-size: 1.3rem;
+        }
+
+        .developer-role {
+            color: var(--secondary);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .developer-desc {
+            color: var(--gray);
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
         /* MODAL */
         .modal {
             display: none;
@@ -1053,7 +1106,7 @@
                 <p>Promover uma cultura de segurança no trabalho através da educação, informação e ferramentas práticas que capacitem empresas e trabalhadores a criar ambientes mais seguros e saudáveis.</p>
 
                 <h3>Nossa Visão</h3>
-                <p>Ser a plataforma de refer��ncia em segurança ocupacional no Brasil, reconhecida por contribuir para a redução de acidentes e doenças do trabalho.</p>
+                <p>Ser a plataforma de referência em segurança ocupacional no Brasil, reconhecida por contribuir para a redução de acidentes e doenças do trabalho.</p>
 
                 <h3>Nossos Valores</h3>
                 <ul style="margin-left: 20px;">
@@ -1066,28 +1119,31 @@
             </div>
 
             <h2 style="margin-top: 3rem;">Nossa Equipe de Desenvolvimento</h2>
-            <div class="credits">
-                <h3>👨‍💻 Programadores Responsáveis</h3>
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-top: 2rem;">
-                    <div class="card" style="background: linear-gradient(135deg, #1e40af 0%, #1e3a8a 100%); color: white; border: none;">
-                        <div class="card-icon" style="text-align: center;">👨‍💼</div>
-                        <h3 style="color: #fbbf24; text-align: center;">Gabriel Lima</h3>
-                        <p style="text-align: center; color: #e2e8f0;">Desenvolvedor Full Stack</p>
-                        <p style="text-align: center; color: #cbd5e1; font-size: 0.9rem;">Responsável pela arquitetura geral do projeto e integração de sistemas.</p>
+            <div class="developer-grid">
+                <div class="developer-card">
+                    <img src="img1.jpg" alt="Gabriel Lima" class="developer-image">
+                    <div class="developer-info">
+                        <h3>Gabriel Lima</h3>
+                        <div class="developer-role">Desenvolvedor Full Stack</div>
+                        <div class="developer-desc">Responsável pela arquitetura geral do projeto e integração de sistemas.</div>
                     </div>
+                </div>
 
-                    <div class="card" style="background: linear-gradient(135deg, #dc2626 0%, #991b1b 100%); color: white; border: none;">
-                        <div class="card-icon" style="text-align: center;">👨‍💼</div>
-                        <h3 style="color: #fbbf24; text-align: center;">Dayllon Kauan</h3>
-                        <p style="text-align: center; color: #e2e8f0;">Desenvolvedor Backend</p>
-                        <p style="text-align: center; color: #cbd5e1; font-size: 0.9rem;">Responsável pelos serviços, banco de dados e API.</p>
+                <div class="developer-card">
+                    <img src="img2.jpg" alt="Dayllon Kauan" class="developer-image">
+                    <div class="developer-info">
+                        <h3>Dayllon Kauan</h3>
+                        <div class="developer-role">Desenvolvedor Backend</div>
+                        <div class="developer-desc">Responsável pelos serviços, banco de dados e API.</div>
                     </div>
+                </div>
 
-                    <div class="card" style="background: linear-gradient(135deg, #16a34a 0%, #15803d 100%); color: white; border: none;">
-                        <div class="card-icon" style="text-align: center;">👨‍💼</div>
-                        <h3 style="color: #fbbf24; text-align: center;">Adryan Kaue</h3>
-                        <p style="text-align: center; color: #e2e8f0;">Desenvolvedor Frontend</p>
-                        <p style="text-align: center; color: #cbd5e1; font-size: 0.9rem;">Responsável pela interface e experiência do usuário.</p>
+                <div class="developer-card">
+                    <img src="img3.jpg" alt="Adryan Kaue" class="developer-image">
+                    <div class="developer-info">
+                        <h3>Adryan Kaue</h3>
+                        <div class="developer-role">Desenvolvedor Frontend</div>
+                        <div class="developer-desc">Responsável pela interface e experiência do usuário.</div>
                     </div>
                 </div>
             </div>
