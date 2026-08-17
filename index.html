@@ -1,0 +1,1242 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Segurança no Trabalho - Portal Profissional</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #1e40af;
+            --primary-dark: #1e3a8a;
+            --secondary: #dc2626;
+            --success: #16a34a;
+            --warning: #ea580c;
+            --light: #f8fafc;
+            --dark: #1e293b;
+            --gray: #64748b;
+            --border: #e2e8f0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: #fff;
+        }
+
+        /* NAVBAR */
+        .navbar {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .navbar-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar-brand {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .navbar-menu {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .navbar-menu a {
+            color: white;
+            text-decoration: none;
+            cursor: pointer;
+            transition: opacity 0.3s;
+            font-weight: 500;
+        }
+
+        .navbar-menu a:hover {
+            opacity: 0.8;
+        }
+
+        .navbar-menu a.active {
+            border-bottom: 3px solid var(--warning);
+            padding-bottom: 5px;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* HERO SECTION */
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            padding: 6rem 20px;
+            text-align: center;
+            min-height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s;
+            font-weight: 600;
+        }
+
+        .btn-primary {
+            background-color: var(--secondary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: #b91c1c;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(220, 38, 38, 0.3);
+        }
+
+        .btn-secondary {
+            background-color: white;
+            color: var(--primary);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--light);
+        }
+
+        /* CONTAINER */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* SECTIONS */
+        section {
+            display: none;
+            padding: 4rem 20px;
+            min-height: 600px;
+        }
+
+        section.active {
+            display: block;
+        }
+
+        section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: var(--primary);
+            text-align: center;
+        }
+
+        section h3 {
+            font-size: 1.5rem;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: var(--primary-dark);
+        }
+
+        /* GRID */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .card {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 2rem;
+            transition: all 0.3s;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+
+        .card-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .card h3 {
+            margin-top: 0;
+            color: var(--primary);
+        }
+
+        /* FORMS */
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--dark);
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 10px 15px;
+            border: 1px solid var(--border);
+            border-radius: 5px;
+            font-size: 1rem;
+            font-family: inherit;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(30, 64, 175, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .form-container {
+            max-width: 600px;
+            margin: 2rem auto;
+            background: var(--light);
+            padding: 2rem;
+            border-radius: 8px;
+        }
+
+        /* NORMS TABLE */
+        .norms-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 2rem;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .norms-table th {
+            background-color: var(--primary);
+            color: white;
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        .norms-table td {
+            padding: 1rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .norms-table tr:hover {
+            background-color: var(--light);
+        }
+
+        /* ALERT */
+        .alert {
+            padding: 1rem;
+            border-radius: 5px;
+            margin-bottom: 1rem;
+        }
+
+        .alert-success {
+            background-color: #dcfce7;
+            color: #166534;
+            border-left: 4px solid var(--success);
+        }
+
+        .alert-error {
+            background-color: #fee2e2;
+            color: #991b1b;
+            border-left: 4px solid var(--secondary);
+        }
+
+        .alert-info {
+            background-color: #dbeafe;
+            color: #1e40af;
+            border-left: 4px solid var(--primary);
+        }
+
+        /* BLOG */
+        .blog-post {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .blog-post h3 {
+            margin-top: 0;
+            color: var(--primary);
+        }
+
+        .blog-meta {
+            font-size: 0.9rem;
+            color: var(--gray);
+            margin-bottom: 1rem;
+        }
+
+        .blog-meta span {
+            margin-right: 1rem;
+        }
+
+        /* DENÚNCIA FORM */
+        .denuncia-form {
+            background: #fef2f2;
+            border-left: 4px solid var(--secondary);
+            padding: 2rem;
+            border-radius: 5px;
+            margin: 2rem 0;
+        }
+
+        /* FOOTER */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 3rem 20px 1rem;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h4 {
+            margin-bottom: 1rem;
+            color: var(--warning);
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section a {
+            color: #cbd5e1;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #334155;
+            padding-top: 2rem;
+            text-align: center;
+            color: #cbd5e1;
+        }
+
+        .credits {
+            background: #0f172a;
+            padding: 2rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+            text-align: center;
+        }
+
+        .credits h3 {
+            color: var(--warning);
+            margin-bottom: 1rem;
+        }
+
+        .programmer {
+            display: inline-block;
+            padding: 10px 20px;
+            margin: 5px;
+            background: var(--primary);
+            border-radius: 5px;
+            font-weight: 600;
+        }
+
+        /* MODAL */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            animation: fadeIn 0.3s;
+        }
+
+        .modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            width: 90%;
+            max-width: 500px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            animation: slideIn 0.3s;
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .modal-header h2 {
+            margin: 0;
+            color: var(--primary);
+        }
+
+        .close-btn {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--gray);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideIn {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .navbar-menu {
+                display: none;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                right: 0;
+                flex-direction: column;
+                background: var(--primary-dark);
+                padding: 1rem;
+                gap: 0;
+            }
+
+            .navbar-menu.active {
+                display: flex;
+            }
+
+            .navbar-menu a {
+                padding: 1rem;
+                border-bottom: 1px solid rgba(255,255,255,0.1);
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            section {
+                padding: 2rem 20px;
+            }
+
+            .norms-table {
+                font-size: 0.9rem;
+            }
+
+            .norms-table th,
+            .norms-table td {
+                padding: 0.75rem;
+            }
+        }
+
+        /* LOADING */
+        .loading {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .spinner {
+            border: 4px solid var(--light);
+            border-top: 4px solid var(--primary);
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* STATS */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .stat-box {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(30, 64, 175, 0.2);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+    </style>
+</head>
+<body>
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="navbar-brand">
+                🛡️ Segurança no Trabalho
+            </div>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
+            <ul class="navbar-menu" id="navbarMenu">
+                <li><a onclick="navigateTo('home')" class="nav-link active">Início</a></li>
+                <li><a onclick="navigateTo('normas')" class="nav-link">Normas</a></li>
+                <li><a onclick="navigateTo('blog')" class="nav-link">Blog</a></li>
+                <li><a onclick="navigateTo('denuncia')" class="nav-link">Denúncias</a></li>
+                <li><a onclick="navigateTo('documentos')" class="nav-link">Documentos</a></li>
+                <li><a onclick="navigateTo('contato')" class="nav-link">Contato</a></li>
+                <li><a onclick="navigateTo('sobre')" class="nav-link">Sobre</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- HOME -->
+    <section id="home" class="active">
+        <div class="hero">
+            <div class="hero-content">
+                <h1>🛡️ Segurança no Trabalho</h1>
+                <p>Sua plataforma completa para aprender e promover segurança ocupacional</p>
+                <button class="btn btn-primary" onclick="navigateTo('normas')">Conhecer Normas</button>
+                <button class="btn btn-secondary" style="margin-left: 10px;" onclick="navigateTo('contato')">Fale Conosco</button>
+            </div>
+        </div>
+
+        <div class="container">
+            <h2>Por que Segurança no Trabalho?</h2>
+            <div class="grid">
+                <div class="card">
+                    <div class="card-icon">📚</div>
+                    <h3>Conhecimento</h3>
+                    <p>Acesse informações sobre todas as Normas Regulamentadoras (NR) e legislação de segurança.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🔒</div>
+                    <h3>Proteção</h3>
+                    <p>Aprenda sobre Equipamentos de Proteção Individual (EPI) e práticas seguras.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">📊</div>
+                    <h3>Gestão</h3>
+                    <p>Gerencie documentos e registros de segurança com eficiência.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">⚠️</div>
+                    <h3>Denúncias</h3>
+                    <p>Reporte violações de segurança de forma anônima e segura.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">👥</div>
+                    <h3>Comunidade</h3>
+                    <p>Conecte-se com profissionais de segurança e compartilhe experiências.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">✅</div>
+                    <h3>Conformidade</h3>
+                    <p>Mantenha sua empresa em conformidade com as leis e regulamentações.</p>
+                </div>
+            </div>
+
+            <h2 style="margin-top: 4rem;">Estatísticas</h2>
+            <div class="stats">
+                <div class="stat-box">
+                    <div class="stat-number">36</div>
+                    <div class="stat-label">Normas Regulamentadoras</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">1000+</div>
+                    <div class="stat-label">Recursos Educacionais</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">24/7</div>
+                    <div class="stat-label">Suporte Disponível</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">15.000+</div>
+                    <div class="stat-label">Usuários Ativos</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NORMAS -->
+    <section id="normas">
+        <div class="container">
+            <h2>Normas Regulamentadoras (NR)</h2>
+            <p>Conheça as Normas Regulamentadoras que regulam a segurança e a saúde do trabalhador.</p>
+
+            <table class="norms-table">
+                <thead>
+                    <tr>
+                        <th>NR</th>
+                        <th>Descrição</th>
+                        <th>Aplicação</th>
+                        <th>Importância</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>NR-1</strong></td>
+                        <td>Disposições Gerais</td>
+                        <td>Todos os setores</td>
+                        <td>⭐⭐⭐⭐⭐</td>
+                    </tr>
+                    <tr>
+                        <td><strong>NR-2</strong></td>
+                        <td>Inspeção de Segurança</td>
+                        <td>Todos os setores</td>
+                        <td>⭐⭐⭐⭐</td>
+                    </tr>
+                    <tr>
+                        <td><strong>NR-4</strong></td>
+                        <td>SESMT</td>
+                        <td>Empresas com 50+ funcionários</td>
+                        <td>⭐⭐⭐⭐⭐</td>
+                    </tr>
+                    <tr>
+                        <td><strong>NR-5</strong></td>
+                        <td>CIPA</td>
+                        <td>Empresas com 20+ funcionários</td>
+                        <td>⭐⭐⭐⭐⭐</td>
+                    </tr>
+                    <tr>
+                        <td><strong>NR-6</strong></td>
+                        <td>EPI</td>
+                        <td>Todos os setores</td>
+                        <td>⭐⭐⭐⭐⭐</td>
+                    </tr>
+                    <tr>
+                        <td><strong>NR-7</strong></td>
+                        <td>PCMSO</td>
+                        <td>Todos os setores</td>
+                        <td>⭐⭐⭐⭐</td>
+                    </tr>
+                    <tr>
+                        <td><strong>NR-8</strong></td>
+                        <td>Edifícios</td>
+                        <td>Construção civil</td>
+                        <td>⭐⭐⭐⭐</td>
+                    </tr>
+                    <tr>
+                        <td><strong>NR-9</strong></td>
+                        <td>PPRA</td>
+                        <td>Todos os setores</td>
+                        <td>⭐⭐⭐⭐⭐</td>
+                    </tr>
+                    <tr>
+                        <td><strong>NR-10</strong></td>
+                        <td>Eletricidade</td>
+                        <td>Trabalhos com eletricidade</td>
+                        <td>⭐⭐⭐⭐⭐</td>
+                    </tr>
+                    <tr>
+                        <td><strong>NR-11</strong></td>
+                        <td>Transporte</td>
+                        <td>Logística e armazenagem</td>
+                        <td>⭐⭐⭐⭐</td>
+                    </tr>
+                    <tr>
+                        <td><strong>NR-12</strong></td>
+                        <td>Máquinas e Equipamentos</td>
+                        <td>Indústria e manufatura</td>
+                        <td>⭐⭐⭐⭐⭐</td>
+                    </tr>
+                    <tr>
+                        <td><strong>NR-13</strong></td>
+                        <td>Caldeiras</td>
+                        <td>Indústrias com caldeiras</td>
+                        <td>⭐⭐⭐⭐</td>
+                    </tr>
+                    <tr>
+                        <td><strong>NR-15</strong></td>
+                        <td>Agentes Nocivos</td>
+                        <td>Ambientes insalubres</td>
+                        <td>⭐⭐⭐⭐⭐</td>
+                    </tr>
+                    <tr>
+                        <td><strong>NR-16</strong></td>
+                        <td>Explosivos</td>
+                        <td>Indústria de explosivos</td>
+                        <td>⭐⭐⭐⭐⭐</td>
+                    </tr>
+                    <tr>
+                        <td><strong>NR-17</strong></td>
+                        <td>Ergonomia</td>
+                        <td>Todos os setores</td>
+                        <td>⭐⭐⭐⭐⭐</td>
+                    </tr>
+                    <tr>
+                        <td><strong>NR-18</strong></td>
+                        <td>Construção</td>
+                        <td>Construção civil</td>
+                        <td>⭐⭐⭐⭐⭐</td>
+                    </tr>
+                    <tr>
+                        <td><strong>NR-19</strong></td>
+                        <td>Explosivos</td>
+                        <td>Materiais explosivos</td>
+                        <td>⭐⭐⭐⭐</td>
+                    </tr>
+                    <tr>
+                        <td><strong>NR-20</strong></td>
+                        <td>Líquidos Inflamáveis</td>
+                        <td>Indústrias químicas</td>
+                        <td>⭐⭐⭐⭐⭐</td>
+                    </tr>
+                    <tr>
+                        <td><strong>NR-21</strong></td>
+                        <td>Trabalhos em Altura</td>
+                        <td>Construção, manutenção</td>
+                        <td>⭐⭐⭐⭐⭐</td>
+                    </tr>
+                    <tr>
+                        <td><strong>NR-22</strong></td>
+                        <td>Mineração</td>
+                        <td>Indústria de mineração</td>
+                        <td>⭐⭐⭐⭐</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3 style="margin-top: 3rem;">Normas Regulamentadoras Adicionais</h3>
+            <div class="grid">
+                <div class="card">
+                    <h3>NR-23 a NR-36</h3>
+                    <p>Outras normas importantes incluem:</p>
+                    <ul style="margin-left: 20px;">
+                        <li>NR-23: Proteção Contra Incêndio</li>
+                        <li>NR-24: Condições Sanitárias</li>
+                        <li>NR-25: Resíduos Industriais</li>
+                        <li>NR-26: Sinalização de Segurança</li>
+                        <li>NR-27 a NR-36: Setores específicos</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BLOG -->
+    <section id="blog">
+        <div class="container">
+            <h2>Blog - Segurança em Foco</h2>
+
+            <div class="blog-post">
+                <h3>10 Práticas Essenciais para Segurança no Trabalho</h3>
+                <div class="blog-meta">
+                    <span>📅 15 de Agosto de 2026</span>
+                    <span>✍️ Dayllon Kauan</span>
+                    <span>⏱️ 5 min de leitura</span>
+                </div>
+                <p>A segurança no trabalho é fundamental para proteger os colaboradores. Neste artigo, apresentamos 10 práticas essenciais que toda empresa deve implementar para garantir um ambiente seguro e saudável.</p>
+                <p><strong>1. Treinamento Regular:</strong> Todos os funcionários devem receber treinamento sobre segurança no seu setor.</p>
+                <p><strong>2. Uso de EPI:</strong> Equipamentos de Proteção Individual devem estar sempre disponíveis e em bom estado.</p>
+                <p><strong>3. Manutenção de Equipamentos:</strong> Máquinas e equipamentos devem ser mantidos regularmente.</p>
+                <p><strong>4. Comunicação:</strong> Manter canais abertos para relatar riscos e preocupações.</p>
+                <p><strong>5. Inspeções Periódicas:</strong> Verificar regularmente as condições de segurança do local de trabalho.</p>
+            </div>
+
+            <div class="blog-post">
+                <h3>Ergonomia: Prevenindo Lesões nas Costas</h3>
+                <div class="blog-meta">
+                    <span>📅 10 de Agosto de 2026</span>
+                    <span>✍️ Adryan Kaue</span>
+                    <span>⏱️ 7 min de leitura</span>
+                </div>
+                <p>Lesões nas costas são uma das principais causas de afastamento no trabalho. A ergonomia correta pode prevenir esses problemas. Saiba como posicionar sua mesa, cadeira e equipamentos para trabalhar com segurança.</p>
+            </div>
+
+            <div class="blog-post">
+                <h3>Acidentes de Trabalho: Como Responder</h3>
+                <div class="blog-meta">
+                    <span>📅 05 de Agosto de 2026</span>
+                    <span>✍️ Gabriel Lima</span>
+                    <span>⏱️ 6 min de leitura</span>
+                </div>
+                <p>Quando um acidente de trabalho ocorre, as primeiras horas são críticas. Conheça os procedimentos necessários para responder adequadamente a uma emergência no local de trabalho.</p>
+            </div>
+
+            <div class="blog-post">
+                <h3>NR-5: Entendendo a Importância da CIPA</h3>
+                <div class="blog-meta">
+                    <span>📅 01 de Agosto de 2026</span>
+                    <span>✍️ Dayllon Kauan</span>
+                    <span>⏱️ 8 min de leitura</span>
+                </div>
+                <p>A Comissão Interna de Prevenção de Acidentes (CIPA) é crucial para manter a segurança nas empresas. Entenda como ela funciona e qual é seu papel na organização.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- DOCUMENTOS -->
+    <section id="documentos">
+        <div class="container">
+            <h2>Centro de Documentos</h2>
+            <p>Download de documentos, modelos e referências sobre segurança no trabalho.</p>
+
+            <div class="grid">
+                <div class="card">
+                    <div class="card-icon">📄</div>
+                    <h3>Modelo - PPRA</h3>
+                    <p>Programa de Prevenção de Riscos Ambientais. Modelo completo para sua empresa.</p>
+                    <button class="btn btn-primary">📥 Download</button>
+                </div>
+                <div class="card">
+                    <div class="card-icon">📋</div>
+                    <h3>Checklist CIPA</h3>
+                    <p>Checklist de inspeção para membros da CIPA verificarem regularmente.</p>
+                    <button class="btn btn-primary">📥 Download</button>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🔐</div>
+                    <h3>Modelo - AET</h3>
+                    <p>Análise Ergonômica do Trabalho. Template para análise detalhada.</p>
+                    <button class="btn btn-primary">📥 Download</button>
+                </div>
+                <div class="card">
+                    <div class="card-icon">📊</div>
+                    <h3>Relatório de Acidentes</h3>
+                    <p>Formulário para registro e análise de acidentes no trabalho.</p>
+                    <button class="btn btn-primary">📥 Download</button>
+                </div>
+                <div class="card">
+                    <div class="card-icon">👔</div>
+                    <h3>Política de Segurança</h3>
+                    <p>Template de política de segurança e saúde ocupacional.</p>
+                    <button class="btn btn-primary">📥 Download</button>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🎓</div>
+                    <h3>Guia de Treinamento</h3>
+                    <p>Guia completo para estruturar treinamentos de segurança.</p>
+                    <button class="btn btn-primary">📥 Download</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DENÚNCIAS -->
+    <section id="denuncia">
+        <div class="container">
+            <h2>Sistema de Denúncias</h2>
+            <p>Reporte violações de segurança de forma anônima e segura. Seus dados estão protegidos.</p>
+
+            <div class="denuncia-form">
+                <div class="alert alert-info">
+                    <strong>ℹ️ Informação:</strong> As denúncias podem ser anônimas. Não coletaremos suas informações pessoais a menos que você deseje receber retorno.
+                </div>
+
+                <div class="form-container">
+                    <form id="denunciaForm" onsubmit="submitDenuncia(event)">
+                        <div class="form-group">
+                            <label>Tipo de Violação *</label>
+                            <select required>
+                                <option>Falta de EPI</option>
+                                <option>Ambiente insalubre</option>
+                                <option>Falta de treinamento</option>
+                                <option>Máquinas sem proteção</option>
+                                <option>Jornada excessiva</option>
+                                <option>Outro</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Descrição da Violação *</label>
+                            <textarea required placeholder="Descreva detalhadamente o que observou..."></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Local (empresa/setor)</label>
+                            <input type="text" placeholder="Ex: Empresa XYZ - Setor de Produção">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Data da Ocorrência</label>
+                            <input type="date">
+                        </div>
+
+                        <div class="form-group">
+                            <label>
+                                <input type="checkbox"> Desejo receber retorno
+                            </label>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Email (opcional, para retorno)</label>
+                            <input type="email" placeholder="seu.email@example.com">
+                        </div>
+
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">Enviar Denúncia</button>
+                    </form>
+                </div>
+            </div>
+
+            <h3>Perguntas Frequentes</h3>
+            <div class="grid">
+                <div class="card">
+                    <h3>Minha identidade será mantida em sigilo?</h3>
+                    <p>Sim, absoluto. As denúncias anônimas são processadas com total confidencialidade.</p>
+                </div>
+                <div class="card">
+                    <h3>O que acontece após enviar uma denúncia?</h3>
+                    <p>Será feita uma investigação e as autoridades competentes serão notificadas conforme necessário.</p>
+                </div>
+                <div class="card">
+                    <h3>Posso sofrer represálias?</h3>
+                    <p>Não. É crime por lei retaliar um denunciante. Sua proteção é garantida.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTATO -->
+    <section id="contato">
+        <div class="container">
+            <h2>Entre em Contato</h2>
+            <p>Dúvidas, sugestões ou denúncias? Fale conosco!</p>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 2rem;">
+                <div>
+                    <h3>Informações de Contato</h3>
+                    <div class="card">
+                        <p><strong>📧 Email:</strong><br> contato@segurancanotrabalho.com.br</p>
+                        <p><strong>📞 Telefone:</strong><br> (11) 3000-0000</p>
+                        <p><strong>📱 WhatsApp:</strong><br> (11) 99999-9999</p>
+                        <p><strong>📍 Endereço:</strong><br> Rua da Segurança, 123<br> São Paulo, SP 01310-100</p>
+                        <p><strong>⏰ Horário:</strong><br> Seg-Sex: 8h às 18h<br> Sábado: 8h às 12h</p>
+                    </div>
+                </div>
+
+                <div>
+                    <h3>Formulário de Contato</h3>
+                    <div class="form-container">
+                        <form id="contatoForm" onsubmit="submitContato(event)">
+                            <div class="form-group">
+                                <label>Nome *</label>
+                                <input type="text" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Email *</label>
+                                <input type="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Telefone</label>
+                                <input type="tel">
+                            </div>
+                            <div class="form-group">
+                                <label>Assunto *</label>
+                                <input type="text" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Mensagem *</label>
+                                <textarea required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary" style="width: 100%;">Enviar</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div style="margin-top: 2rem;">
+                <h3>Redes Sociais</h3>
+                <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                    <a href="#" class="btn btn-primary">📘 Facebook</a>
+                    <a href="#" class="btn btn-primary">🐦 Twitter</a>
+                    <a href="#" class="btn btn-primary">📷 Instagram</a>
+                    <a href="#" class="btn btn-primary">💼 LinkedIn</a>
+                    <a href="#" class="btn btn-primary">▶️ YouTube</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SOBRE -->
+    <section id="sobre">
+        <div class="container">
+            <h2>Sobre Nós</h2>
+
+            <div class="card" style="margin: 2rem auto; max-width: 800px;">
+                <h3>Nossa Missão</h3>
+                <p>Promover uma cultura de segurança no trabalho através da educação, informação e ferramentas práticas que capacitem empresas e trabalhadores a criar ambientes mais seguros e saudáveis.</p>
+
+                <h3>Nossa Visão</h3>
+                <p>Ser a plataforma de refer��ncia em segurança ocupacional no Brasil, reconhecida por contribuir para a redução de acidentes e doenças do trabalho.</p>
+
+                <h3>Nossos Valores</h3>
+                <ul style="margin-left: 20px;">
+                    <li>🎯 Excelência em tudo que fazemos</li>
+                    <li>🤝 Integridade e transparência</li>
+                    <li>💪 Compromisso com a segurança</li>
+                    <li>🌱 Inovação contínua</li>
+                    <li>♿ Inclusão e respeito</li>
+                </ul>
+            </div>
+
+            <h2 style="margin-top: 3rem;">Nossa Equipe de Desenvolvimento</h2>
+            <div class="credits">
+                <h3>👨‍💻 Programadores Responsáveis</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-top: 2rem;">
+                    <div class="card" style="background: linear-gradient(135deg, #1e40af 0%, #1e3a8a 100%); color: white; border: none;">
+                        <div class="card-icon" style="text-align: center;">👨‍💼</div>
+                        <h3 style="color: #fbbf24; text-align: center;">Gabriel Lima</h3>
+                        <p style="text-align: center; color: #e2e8f0;">Desenvolvedor Full Stack</p>
+                        <p style="text-align: center; color: #cbd5e1; font-size: 0.9rem;">Responsável pela arquitetura geral do projeto e integração de sistemas.</p>
+                    </div>
+
+                    <div class="card" style="background: linear-gradient(135deg, #dc2626 0%, #991b1b 100%); color: white; border: none;">
+                        <div class="card-icon" style="text-align: center;">👨‍💼</div>
+                        <h3 style="color: #fbbf24; text-align: center;">Dayllon Kauan</h3>
+                        <p style="text-align: center; color: #e2e8f0;">Desenvolvedor Backend</p>
+                        <p style="text-align: center; color: #cbd5e1; font-size: 0.9rem;">Responsável pelos serviços, banco de dados e API.</p>
+                    </div>
+
+                    <div class="card" style="background: linear-gradient(135deg, #16a34a 0%, #15803d 100%); color: white; border: none;">
+                        <div class="card-icon" style="text-align: center;">👨‍💼</div>
+                        <h3 style="color: #fbbf24; text-align: center;">Adryan Kaue</h3>
+                        <p style="text-align: center; color: #e2e8f0;">Desenvolvedor Frontend</p>
+                        <p style="text-align: center; color: #cbd5e1; font-size: 0.9rem;">Responsável pela interface e experiência do usuário.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div style="background: var(--light); padding: 2rem; border-radius: 8px; margin-top: 2rem;">
+                <h3>Tecnologias Utilizadas</h3>
+                <div style="display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 1rem;">
+                    <span class="programmer">HTML5</span>
+                    <span class="programmer">CSS3</span>
+                    <span class="programmer">JavaScript</span>
+                    <span class="programmer">React</span>
+                    <span class="programmer">Node.js</span>
+                    <span class="programmer">Express</span>
+                    <span class="programmer">MongoDB</span>
+                    <span class="programmer">Tailwind CSS</span>
+                </div>
+            </div>
+
+            <div style="background: #fffbeb; border-left: 4px solid #ea580c; padding: 2rem; border-radius: 8px; margin-top: 2rem;">
+                <h3>Certificações e Parcerias</h3>
+                <p>Trabalharemos em breve com:</p>
+                <ul style="margin-left: 20px;">
+                    <li>Ministério do Trabalho</li>
+                    <li>ABNT (Associação Brasileira de Normas Técnicas)</li>
+                    <li>Sindicatos e Associações Profissionais</li>
+                    <li>Universidades e Institutos de Pesquisa</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Sobre</h4>
+                <ul>
+                    <li><a onclick="navigateTo('sobre')">Sobre Nós</a></li>
+                    <li><a href="#">Missão e Valores</a></li>
+                    <li><a href="#">Equipe</a></li>
+                    <li><a href="#">Carreiras</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h4>Recursos</h4>
+                <ul>
+                    <li><a onclick="navigateTo('normas')">Normas</a></li>
+                    <li><a onclick="navigateTo('blog')">Blog</a></li>
+                    <li><a onclick="navigateTo('documentos')">Documentos</a></li>
+                    <li><a href="#">FAQ</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="#">Privacidade</a></li>
+                    <li><a href="#">Termos de Uso</a></li>
+                    <li><a href="#">Cookies</a></li>
+                    <li><a href="#">Conformidade</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h4>Contato</h4>
+                <ul>
+                    <li><a onclick="navigateTo('contato')">Fale Conosco</a></li>
+                    <li><a onclick="navigateTo('denuncia')">Denúncias</a></li>
+                    <li>📧 contato@segurancanotrabalho.com.br</li>
+                    <li>📞 (11) 3000-0000</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="credits">
+                <h3>🛡️ Créditos - Desenvolvido com ❤️</h3>
+                <p style="margin: 1rem 0;">
+                    <span class="programmer">Gabriel Lima</span>
+                    <span class="programmer">Dayllon Kauan</span>
+                    <span class="programmer">Adryan Kaue</span>
+                </p>
+                <p>&copy; 2026 Segurança no Trabalho. Todos os direitos reservados.</p>
+                <p style="font-size: 0.9rem; margin-top: 1rem;">
+                    Desenvolvido como um projeto educacional e profissional dedicado à promoção da segurança ocupacional no Brasil.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Navigation
+        function navigateTo(page) {
+            // Hide all sections
+            document.querySelectorAll('section').forEach(section => {
+                section.classList.remove('active');
+            });
+
+            // Remove active class from all nav links
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('active');
+            });
+
+            // Show selected section
+            const section = document.getElementById(page);
+            if (section) {
+                section.classList.add('active');
+                window.scrollTo(0, 0);
+            }
+
+            // Add active class to clicked nav link
+            event.target.classList.add('active');
+
+            // Close mobile menu
+            const navMenu = document.getElementById('navbarMenu');
+            navMenu.classList.remove('active');
+        }
+
+        // Mobile menu toggle
+        document.getElementById('mobileMenuBtn').addEventListener('click', function() {
+            const navMenu = document.getElementById('navbarMenu');
+            navMenu.classList.toggle('active');
+        });
+
+        // Form submissions
+        function submitDenuncia(event) {
+            event.preventDefault();
+            const alert = document.createElement('div');
+            alert.className = 'alert alert-success';
+            alert.textContent = '✅ Denúncia recebida com sucesso! Obrigado por reportar. Investigaremos o caso em breve.';
+            event.target.parentElement.prepend(alert);
+            event.target.reset();
+            setTimeout(() => alert.remove(), 5000);
+        }
+
+        function submitContato(event) {
+            event.preventDefault();
+            const alert = document.createElement('div');
+            alert.className = 'alert alert-success';
+            alert.textContent = '✅ Mensagem enviada com sucesso! Responderemos em breve.';
+            event.target.parentElement.prepend(alert);
+            event.target.reset();
+            setTimeout(() => alert.remove(), 5000);
+        }
+
+        // Initialize
+        console.log('🛡️ Segurança no Trabalho - Platform Loaded');
+        console.log('Desenvolvedores: Gabriel Lima, Dayllon Kauan, Adryan Kaue');
+    </script>
+</body>
+</html>
