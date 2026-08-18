@@ -1,0 +1,20 @@
+[
+  {
+    "username": "dev-ana",
+    "password": "Passw0rd!23",
+    "role": "developer",
+    "notes": "Conta de desenvolvimento: Ana"
+  },
+  {
+    "username": "dev-bruno",
+    "password": "S3gur@123",
+    "role": "developer",
+    "notes": "Conta de desenvolvimento: Bruno"
+  },
+  {
+    "username": "dev-carlos",
+    "password": "D3v#2026",
+    "role": "developer",
+    "notes": "Conta de desenvolvimento: Carlos"
+  }
+]

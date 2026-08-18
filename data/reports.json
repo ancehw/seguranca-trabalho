@@ -1,0 +1,16 @@
+[
+  {
+    "id": 1,
+    "title": "Máquinas sem EPI",
+    "author": "Funcionário A",
+    "date": "2026-08-16",
+    "message": "Operadores trabalhando sem equipamentos de proteção individual na linha 3."
+  },
+  {
+    "id": 2,
+    "title": "Saída de emergência bloqueada",
+    "author": "Funcionário B",
+    "date": "2026-08-17",
+    "message": "Caixas empilhadas bloqueando a saída de emergência do setor 2."
+  }
+]
