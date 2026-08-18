@@ -3,215 +3,417 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Segurança no Trabalho - Portal Profissional</title>
+    <title>🛡️ Segurança no Trabalho - Portal Profissional</title>
     <style>
-        /* (existing CSS kept unchanged) */
-        /* -- trimmed for brevity in repository file; actual file retains full styles -- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #e74c3c;
+            --secondary: #3498db;
+            --success: #27ae60;
+            --dark: #2c3e50;
+            --light: #ecf0f1;
+            --text: #333;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background: #f9f9f9;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* HEADER */
+        header {
+            background: linear-gradient(135deg, var(--dark) 0%, #34495e 100%);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--primary);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: 0.3s;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+        }
+
+        nav a:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* HERO */
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 6rem 0;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        .btn {
+            display: inline-block;
+            background: white;
+            color: var(--primary);
+            padding: 1rem 2rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            cursor: pointer;
+            border: none;
+            transition: 0.3s;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+        }
+
+        .btn-secondary {
+            background: var(--secondary);
+            color: white;
+        }
+
+        /* CARDS */
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .card {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--primary);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            transition: 0.3s;
+            overflow: hidden;
+        }
+
+        .card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            margin-bottom: 1rem;
+            border-radius: 5px;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+        }
+
+        .card h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .card p {
+            color: #666;
+        }
+
+        /* SECTIONS */
+        section {
+            padding: 4rem 0;
+        }
+
+        section h2 {
+            text-align: center;
+            font-size: 2.2rem;
+            margin-bottom: 3rem;
+            color: var(--dark);
+        }
+
+        .topics, .about {
+            background: white;
+        }
+
+        .tips {
+            background: var(--light);
+        }
+
+        .developers {
+            background: white;
+        }
+
+        /* DEVELOPERS */
+        .dev-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .dev-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            transition: 0.3s;
+        }
+
+        .dev-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.15);
+        }
+
+        .dev-avatar {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .dev-card h3 {
+            margin-bottom: 0.5rem;
+            font-size: 1.3rem;
+        }
+
+        .dev-card p {
+            font-size: 0.95rem;
+            opacity: 0.9;
+        }
+
+        /* FOOTER */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 2rem 0 1rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+            text-align: left;
+        }
+
+        .footer-section h4 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .footer-section p {
+            color: #bbb;
+            font-size: 0.9rem;
+        }
+
+        .footer-credit {
+            border-top: 1px solid #555;
+            padding-top: 1rem;
+            font-size: 0.9rem;
+            color: #bbb;
+        }
+
+        .footer-credit strong {
+            color: var(--primary);
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            nav ul { gap: 0.5rem; }
+            nav a { padding: 0.3rem 0.6rem; font-size: 0.9rem; }
+            .hero h1 { font-size: 2rem; }
+            .hero p { font-size: 1rem; }
+            section h2 { font-size: 1.6rem; }
+            .card img { height: 200px; }
+        }
     </style>
 </head>
 <body>
-    <!-- NAVBAR -->
-    <nav class="navbar">
-        <div class="navbar-container">
-            <div class="navbar-brand">
-                🛡️ Segurança no Trabalho
-            </div>
-            <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
-            <ul class="navbar-menu" id="navbarMenu">
-                <li><a onclick="navigateTo('home')" class="nav-link active">Início</a></li>
-                <li><a onclick="navigateTo('normas')" class="nav-link">Normas</a></li>
-                <li><a onclick="navigateTo('blog')" class="nav-link">Blog</a></li>
-                <li><a onclick="navigateTo('denuncia')" class="nav-link">Denúncias</a></li>
-                <li><a onclick="navigateTo('documentos')" class="nav-link">Documentos</a></li>
-                <li><a onclick="navigateTo('contato')" class="nav-link">Contato</a></li>
-                <li><a onclick="navigateTo('sobre')" class="nav-link">Sobre</a></li>
-                <li><a onclick="navigateTo('admin')" class="nav-link">Admin</a></li>
-            </ul>
-        </div>
-    </nav>
-
-    <!-- existing sections omitted for brevity (unchanged) -->
-
-    <!-- DENÚNCIAS -->
-    <section id="denuncia">
-        <!-- existing denuncia form ... -->
-    </section>
-
-    <!-- ADMIN SECTION (integrated) -->
-    <section id="admin" style="display:none; padding: 4rem 20px;">
+    <!-- HEADER -->
+    <header>
         <div class="container">
-            <h2>Área Administrativa</h2>
-            <p>Somente usuários autenticados com papel administrativo podem ver esta área.</p>
-
-            <div id="admin-login" class="form-container" style="max-width:520px;">
-                <form id="admin-login-form">
-                    <div class="form-group">
-                        <label for="adm-username">Usuário</label>
-                        <input id="adm-username" name="username" required />
-                    </div>
-                    <div class="form-group">
-                        <label for="adm-password">Senha</label>
-                        <input id="adm-password" name="password" type="password" required />
-                    </div>
-                    <div style="display:flex;gap:8px;">
-                        <button class="btn btn-primary" type="submit">Entrar</button>
-                        <button class="btn btn-secondary" type="button" id="adm-logout" style="display:none;">Sair</button>
-                    </div>
-                    <p id="admin-login-error" class="alert alert-error" style="display:none;margin-top:12px;"></p>
-                </form>
+            <div class="header-content">
+                <div class="logo">🛡️ Segurança no Trabalho</div>
+                <nav>
+                    <ul>
+                        <li><a href="#inicio">Início</a></li>
+                        <li><a href="#topicos">Tópicos</a></li>
+                        <li><a href="#dicas">Dicas</a></li>
+                        <li><a href="#desenvolvedores">Equipe</a></li>
+                        <li><a href="#contato">Contato</a></li>
+                    </ul>
+                </nav>
             </div>
+        </div>
+    </header>
 
-            <div id="admin-panel" style="display:none; margin-top:2rem;">
-                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
-                    <div>
-                        <strong>Conectado como</strong>
-                        <span id="admin-current-user"></span>
-                    </div>
+    <!-- HERO -->
+    <section id="inicio" class="hero">
+        <div class="container">
+            <h1>🛡️ Bem-vindo ao Portal de Segurança no Trabalho</h1>
+            <p>Informações essenciais para garantir um ambiente de trabalho seguro e saudável</p>
+            <button class="btn" onclick="document.getElementById('topicos').scrollIntoView()">Saiba Mais</button>
+        </div>
+    </section>
+
+    <!-- TÓPICOS COM IMAGENS -->
+    <section id="topicos">
+        <div class="container">
+            <h2>Tópicos Principais</h2>
+            <div class="cards">
+                <div class="card">
+                    <img src="img1.jpg" alt="Equipamento de Proteção Individual">
+                    <h3>🦺 Equipamento de Proteção Individual</h3>
+                    <p>Conheça os diferentes tipos de EPIs e sua importância na proteção individual no ambiente de trabalho.</p>
                 </div>
-
-                <h3>Denúncias Registradas</h3>
-                <div id="admin-reports-list">
-                    <p class="loading">Carregando denúncias...</p>
+                <div class="card">
+                    <img src="img2.jpg" alt="Riscos Ocupacionais">
+                    <h3>⚠️ Riscos Ocupacionais</h3>
+                    <p>Identifique e compreenda os principais riscos presentes no seu ambiente de trabalho.</p>
+                </div>
+                <div class="card">
+                    <img src="img3.jpg" alt="Prevenção de Acidentes">
+                    <h3>🚒 Prevenção de Acidentes</h3>
+                    <p>Aprenda as melhores práticas e procedimentos para evitar acidentes no dia a dia.</p>
+                </div>
+                <div class="card">
+                    <h3>🏥 Primeiros Socorros</h3>
+                    <p>Guia básico de primeiros socorros para situações de emergência no trabalho.</p>
+                </div>
+                <div class="card">
+                    <h3>📋 Legislação e Normas</h3>
+                    <p>Conheça as Normas Regulamentadoras (NR) e legislações importantes sobre segurança.</p>
+                </div>
+                <div class="card">
+                    <h3>🤝 Responsabilidades</h3>
+                    <p>Entenda os direitos e deveres de empregados, empregadores e órgãos reguladores.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <footer>
-        <!-- existing footer ... -->
+    <!-- DICAS -->
+    <section id="dicas" class="tips">
+        <div class="container">
+            <h2>Dicas Essenciais de Segurança</h2>
+            <div class="cards">
+                <div class="card">
+                    <h3>1️⃣ Use sempre os EPIs</h3>
+                    <p>Não subestime a importância do Equipamento de Proteção Individual. Sempre use conforme exigido.</p>
+                </div>
+                <div class="card">
+                    <h3>2️⃣ Ambiente Organizado</h3>
+                    <p>Mantenha o local limpo e organizado. Um ambiente bagunçado é foco de acidentes.</p>
+                </div>
+                <div class="card">
+                    <h3>3️⃣ Comunique Riscos</h3>
+                    <p>Se identificar um risco, informe imediatamente ao seu supervisor ou equipe de segurança.</p>
+                </div>
+                <div class="card">
+                    <h3>4️⃣ Treinamentos</h3>
+                    <p>Participe sempre dos treinamentos e capacitações oferecidas pela empresa.</p>
+                </div>
+                <div class="card">
+                    <h3>5️⃣ Siga Procedimentos</h3>
+                    <p>Respeite os procedimentos operacionais estabelecidos pela empresa em todas as atividades.</p>
+                </div>
+                <div class="card">
+                    <h3>6️⃣ Cuide da Saúde</h3>
+                    <p>Cuide de sua saúde física e mental. Reporte qualquer desconforto ou problema.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DESENVOLVEDORES -->
+    <section id="desenvolvedores" class="developers">
+        <div class="container">
+            <h2>👥 Nossa Equipe de Desenvolvedores</h2>
+            <div class="dev-cards">
+                <div class="dev-card">
+                    <div class="dev-avatar">👨‍💻</div>
+                    <h3>Gabriel Lima</h3>
+                    <p>Desenvolvedor Full Stack</p>
+                </div>
+                <div class="dev-card">
+                    <div class="dev-avatar">👨‍💻</div>
+                    <h3>Dayllon Kauan</h3>
+                    <p>Desenvolvedor Front-end</p>
+                </div>
+                <div class="dev-card">
+                    <div class="dev-avatar">👨‍💻</div>
+                    <h3>Adryan Kaue</h3>
+                    <p>Desenvolvedor Back-end</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer id="contato">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Sobre</h4>
+                    <p>Portal dedicado à segurança e saúde no trabalho, promovendo consciência e prevenção.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Links Úteis</h4>
+                    <p>Blog | Recursos | FAQ | Políticas</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Contato</h4>
+                    <p>Email: seguranca@trabalho.com<br>Tel: (11) 3000-0000<br>Seg-Sex: 8h às 18h</p>
+                </div>
+            </div>
+            <div class="footer-credit">
+                <p>&copy; 2024 Segurança no Trabalho. Desenvolvido com ❤️ por <strong>Gabriel Lima</strong>, <strong>Dayllon Kauan</strong> e <strong>Adryan Kaue</strong>.</p>
+            </div>
+        </div>
     </footer>
-
-    <script>
-        // Basic navigation used in the site
-        function navigateTo(id){
-            document.querySelectorAll('section').forEach(s=>{
-                if(s.id === id){
-                    s.classList.add('active');
-                    s.style.display = '';
-                } else {
-                    s.classList.remove('active');
-                    s.style.display = 'none';
-                }
-            });
-            document.querySelectorAll('.navbar-menu a').forEach(a=>a.classList.remove('active'));
-            const link = Array.from(document.querySelectorAll('.navbar-menu a')).find(a => a.getAttribute('onclick') && a.getAttribute('onclick').includes("'"+id+"'"));
-            if(link) link.classList.add('active');
-            // if navigating to admin, try load session
-            if(id === 'admin'){
-                tryLoadAdminState();
-            }
-        }
-
-        // Mobile menu
-        document.getElementById('mobileMenuBtn').addEventListener('click', ()=>{
-            document.getElementById('navbarMenu').classList.toggle('active');
-        });
-
-        // Try to load admin session
-        async function tryLoadAdminState(){
-            const loginForm = document.getElementById('admin-login-form');
-            const logoutBtn = document.getElementById('adm-logout');
-            const adminPanel = document.getElementById('admin-panel');
-            const adminLogin = document.getElementById('admin-login');
-            const currentUserSpan = document.getElementById('admin-current-user');
-            const loginError = document.getElementById('admin-login-error');
-
-            async function fetchJSON(url, opts){
-                const res = await fetch(url, Object.assign({ credentials: 'include', headers: { 'Content-Type': 'application/json' } }, opts));
-                if(!res.ok) throw new Error('HTTP ' + res.status);
-                return res.json();
-            }
-
-            async function loadState(){
-                try{
-                    const data = await fetchJSON('/api/me');
-                    if(data && data.user){
-                        currentUserSpan.innerText = data.user.username + (data.user.role ? (' (' + data.user.role + ')') : '');
-                        adminLogin.style.display = 'none';
-                        logoutBtn.style.display = 'inline-block';
-                        adminPanel.style.display = '';
-                        loadReports();
-                    }
-                }catch(e){
-                    // not logged
-                    adminLogin.style.display = '';
-                    adminPanel.style.display = 'none';
-                    logoutBtn.style.display = 'none';
-                }
-            }
-
-            async function loadReports(){
-                const list = document.getElementById('admin-reports-list');
-                list.innerHTML = '<p class="loading">Carregando denúncias...</p>';
-                try{
-                    const data = await fetchJSON('/api/reports');
-                    const reports = data.reports || [];
-                    if(reports.length === 0){
-                        list.innerHTML = '<p>Nenhuma denúncia registrada.</p>';
-                        return;
-                    }
-                    list.innerHTML = '';
-                    reports.forEach(r => {
-                        const div = document.createElement('div');
-                        div.className = 'card';
-                        div.style.marginBottom = '12px';
-                        div.innerHTML = `
-                            <h3>${escapeHtml(r.title || 'Sem título')} ${r.resolved ? '<small style="color:var(--success);">(Resolvida)</small>' : ''}</h3>
-                            <p><strong>Autor:</strong> ${escapeHtml(r.author || 'Anônimo')} — <em>${escapeHtml(r.date || '')}</em></p>
-                            <p>${escapeHtml(r.message || '')}</p>
-                        `;
-                        list.appendChild(div);
-                    });
-                }catch(e){
-                    list.innerHTML = '<p class="alert alert-error">Falha ao carregar denúncias.</p>';
-                }
-            }
-
-            function escapeHtml(s){
-                if(!s) return '';
-                return String(s).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;');
-            }
-
-            // login submit
-            loginForm.addEventListener('submit', async (ev)=>{
-                ev.preventDefault();
-                loginError.style.display = 'none';
-                const username = document.getElementById('adm-username').value.trim();
-                const password = document.getElementById('adm-password').value;
-                try{
-                    const res = await fetch('/api/login', { method: 'POST', credentials: 'include', headers: { 'Content-Type':'application/json' }, body: JSON.stringify({ username, password }) });
-                    if(!res.ok) throw new Error('Unauthorized');
-                    const data = await res.json();
-                    currentUserSpan.innerText = data.user.username + (data.user.role ? (' (' + data.user.role + ')') : '');
-                    adminLogin.style.display = 'none';
-                    logoutBtn.style.display = 'inline-block';
-                    adminPanel.style.display = '';
-                    loadReports();
-                }catch(err){
-                    loginError.innerText = 'Usuário ou senha inválidos.';
-                    loginError.style.display = 'block';
-                }
-            });
-
-            logoutBtn.addEventListener('click', async ()=>{
-                try{ await fetch('/api/logout', { method: 'POST', credentials: 'include' }); }catch(e){}
-                adminLogin.style.display = '';
-                adminPanel.style.display = 'none';
-                logoutBtn.style.display = 'none';
-                document.getElementById('adm-username').value = '';
-                document.getElementById('adm-password').value = '';
-            });
-
-            // initial attempt
-            await loadState();
-        }
-
-        // initial navigation setup
-        document.addEventListener('DOMContentLoaded', ()=>{
-            // keep the home section visible by default (already)
-        });
-    </script>
-
-    <script src="/admin-inline.js"></script>
 </body>
 </html>
