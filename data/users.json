@@ -1,20 +1,30 @@
 [
   {
-    "username": "dev-ana",
-    "password": "Passw0rd!23",
-    "role": "developer",
-    "notes": "Conta de desenvolvimento: Ana"
+    "username": "gabriel-lima",
+    "password": "LiderPass!2026",
+    "role": "leader",
+    "full_name": "Gabriel Lima",
+    "notes": "Líder — acesso administrativo completo"
   },
   {
-    "username": "dev-bruno",
-    "password": "S3gur@123",
-    "role": "developer",
-    "notes": "Conta de desenvolvimento: Bruno"
+    "username": "dayllon-kauan",
+    "password": "AdmDK#2026",
+    "role": "admin",
+    "full_name": "Dayllon Kauan",
+    "notes": "Administrador — acesso administrativo"
   },
   {
-    "username": "dev-carlos",
-    "password": "D3v#2026",
-    "role": "developer",
-    "notes": "Conta de desenvolvimento: Carlos"
+    "username": "adryan-kaue",
+    "password": "AdmAK#2026",
+    "role": "admin",
+    "full_name": "Adryan Kaue",
+    "notes": "Administrador — acesso administrativo"
+  },
+  {
+    "username": "visitante-teste",
+    "password": "Visita2026",
+    "role": "visitor",
+    "full_name": "Visitante de Teste",
+    "notes": "Conta apenas para visualizar denúncias (sem permissões administrativas)"
   }
 ]
